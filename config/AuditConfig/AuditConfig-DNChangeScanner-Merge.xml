@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<sailpoint>
+	<ImportAction name="merge">
+		<AuditConfig>
+			<AuditActions>
+				<AuditAction displayName="DN Change Audit" enabled="true" name="DNChangeAudit"/>
+			</AuditActions>
+		</AuditConfig>
+	</ImportAction>
+</sailpoint>

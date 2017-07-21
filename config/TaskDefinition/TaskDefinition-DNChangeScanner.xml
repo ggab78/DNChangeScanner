@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TaskDefinition PUBLIC 'sailpoint.dtd' 'sailpoint.dtd'>
+<TaskDefinition  executor="com.sailpoint.services.task.DNChangeScanner"  name="DN Change Scanner" progressInterval="5000" progressMode="String" resultAction="Delete"  type="Generic">
+  <Description>
+    Task to deal with LDAP 'distinct name' (DN) changes
+  </Description>
+  <Attributes>
+    <Map>
+      <entry key="certificationCheck" value="true"/>
+      <entry key="processAccounts" value="true"/>
+      <entry key="processGroups" value="true"/>
+      <entry key="taskCompletionEmailNotify" value="Disabled"/>
+      <entry key="taskCompletionEmailRecipients"/>
+      <entry key="taskCompletionEmailTemplate"/>
+      <entry key="workFlowCaseCheck" value="true"/>
+      <entry key="numberThreads" value="5"/>
+    </Map>
+  </Attributes>
+  <Signature>
+  	<Inputs>
+		<Argument multi="true" name="applications" required="true" type="Application">
+	        <Description>Select Applications to scan</Description>
+	      </Argument>
+	      <Argument multi="true" name="uuidOverride" type="string">
+	        <Prompt>Manually define immutable attribute for specific application (Format must be aplication_name;account_immutable_attriute;group_immutable_attribute)</Prompt>
+	      </Argument>
+		  <Argument  name="processAccounts" type="boolean">
+	        <Prompt>Scan for Account Changes</Prompt>
+	      </Argument>
+	      <Argument  name="processDeleteAccounts" type="boolean">
+	        <Prompt>Process Delete Account Detections</Prompt>
+	      </Argument>
+		  <Argument  name="processGroups" type="boolean" >
+	        <Prompt>Scan for Group Changes</Prompt>
+	      </Argument>
+	      <Argument  name="processDeleteGroups" type="boolean">
+	        <Prompt>Process Delete Group Detections</Prompt>
+	      </Argument>
+		  <Argument  name="workFlowCaseCheck" type="boolean" >
+	        <Prompt>Check WorkFlowCases</Prompt>
+	      </Argument>
+	      <Argument  name="workFlowCaseCheckReport" type="boolean" >
+	        <Prompt>If WorkflowCases are identified don't change them, only report on them (Written to Audit)</Prompt>
+	      </Argument>
+		  <Argument  name="certificationCheck" type="boolean" >
+	        <Prompt>Check Certifications</Prompt>
+	      </Argument>
+	      <Argument  name="certificationCheckReport" type="boolean" >
+	        <Prompt>If Certification are identified don't change them, only report on them (Written to Audit)</Prompt>
+	      </Argument>
+		  <Argument  name="numberThreads" type="string">
+	        <Prompt>Number of Threads defaults to 5</Prompt>
+	      </Argument>
+	    </Inputs>
+	    <Returns>
+		  <Argument name="processed" type="String">
+	        <Prompt>Total processed:</Prompt>
+	      </Argument>
+    </Returns>
+  </Signature>
+</TaskDefinition>
